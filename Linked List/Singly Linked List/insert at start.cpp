@@ -1,11 +1,12 @@
-#include <stdio.h>
-#include <string.h>
-#include <math.h>
-#include <stdlib.h>
-
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
 struct node{
     int value;
-    struct node *next;
+    struct node* next;
 };
 void insert(struct node *head, int d){
     struct node* newnode = (struct node*)malloc(sizeof(struct node));
@@ -16,24 +17,22 @@ void insert(struct node *head, int d){
 void print(struct node* head){
     while(head!=NULL){
         if(head->next!=NULL)
-            printf("%d->",head->value);
+            cout<<(head->value)<<"->";
         else
-            printf("%d",head->value);
+            cout<<(head->value);
         head=head->next;
     }
 }
 
 int main() {
-
-    /* Enter your code here. Read input from STDIN. Print output to STDOUT */ 
-    struct node* head=NULL;
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */  
+    struct node *head=NULL;
     int n;
-    scanf("%d",&n);
-    int m;
+    cin>>n;
+    int d;
     for(int i=0;i<n;i++){
-        scanf("%d",&m);
-        insert(head,m);
-        
+        cin>>d;
+        insert(&head,d);
     }
     print(head);
     

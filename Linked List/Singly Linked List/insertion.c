@@ -1,6 +1,3 @@
-//-------------------- head of the code ------------------------
-
-
 #include <string.h>
 #include <stdio.h>
 #include <math.h>
