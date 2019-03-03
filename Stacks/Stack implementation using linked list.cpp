@@ -1,88 +1,94 @@
-//HEAD
-
-#include "stdio.h"
-#include "string.h"
-#include "stdlib.h"
-#include "math.h"
-
-//BODY
-
-struct stackNode{
-    int val;
-    struct stackNode* next;
+#include <iostream>
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <algorithm>
+#include <stdlib.h>
+using namespace std;
+template <class T>
+struct node{
+    T x;
+    struct node* next;
 };
-typedef struct stackNode stackNode;
-stackNode* stackHead;
-int empty();
-void push(int x)
-{
-    stackNode *newnode = (stackNode*)malloc(sizeof(stackNode));
-    newnode->val=x;
-    newnode->next=stackHead;
-    stackHead=newnode;
+template <class T>
+void push(struct node<T>** stack,T d){
+    struct node<T>* temp=(struct node<T>*)malloc(sizeof(struct node<T>));
+    temp->x=d;
+    temp->next=*stack;
+    *stack=temp;
 }
-int peek()
-{
-    int x=(stackHead->val);
-    return x;
+template <class T>
+struct node<T>* pop(struct node<T>* stack){
+    struct node<T>* p;
+    p=stack;
+    stack=stack->next;
+    delete(p);
+    p=NULL;
+    return stack;
 }
-void pop(){
-    stackNode *p;
-    p=stackHead;
-    if(!empty()){
-        stackHead = p->next;
-        free(p);
+template <class T>
+void print(struct node<T> *stack){
+    struct node<T>* p;
+    p=stack;
+    while(p!=NULL){
+        cout<<p->x<<" ";
+        p=p->next;
     }
- 
 }
-int empty(){
-    if(stackHead==NULL)
-        return 1;
-    else 
-        return 0;
+template <class T>
+bool empty(struct node<T>* stack){
+    if(stack==NULL) return true;
+    
+    return false;
 }
-
-//TAIL
-
-int main()
-{
-    int n;
-    stackHead = NULL;
-    scanf("%d", &n);
-    for (int i = 0; i < n; i++) {
-        int t, x;
-        scanf("%d", &t);
-        if (t == 1) {
-            scanf("%d", &x);
-            push(x);
-        }
-        else if (t == 2) {
-            if (empty()) {
-                printf("Invalid\n");
-            }
-            else {
-                pop();
-            }
-        }
-        else if (t == 3){
-            if (empty()) {
-                printf("Invalid\n");
-                continue;
-            }
-            stackNode* j = stackHead;
-            while (j) {
-                printf("%d ", j->val);
-                j = j->next;
-            }
-            printf("\n");
-        }
-        else {
-            if (empty()) {
-                printf("Invalid\n");
-                continue;
-            }
-            printf("%d\n", peek());
-        }
+template <class T>
+T top(struct node<T>* stack){
+    if(empty(stack)) return 0;
+    else{
+        T jj=stack->x;
+        return(jj);
     }
+}
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */ 
+    struct node<int>* stack=NULL;
+    
+    push(&stack,1);
+    push(&stack,2);
+    push(&stack,3);
+    print(stack);
+    cout<<endl<<top(stack);
+    stack=pop(stack);
+    cout<<endl<<top(stack);
+    stack=pop(stack);
+    cout<<endl<<top(stack);
+    stack=pop(stack);
+    
+    struct node<double>* stack1=NULL;
+    push(&stack1,1.2);
+    push(&stack1,2.2);
+    push(&stack1,3.2);
+    cout<<endl;
+    print(stack1);
+    cout<<endl<<top(stack1);
+    stack1=pop(stack1);
+    cout<<endl<<top(stack1);
+    stack1=pop(stack1);
+    cout<<endl<<top(stack1);
+    stack1=pop(stack1);
+    
+    struct node<char>* stack2=NULL;
+    push(&stack2,'a');
+    push(&stack2,'b');
+    push(&stack2,'c');
+    cout<<endl;
+    print(stack2);
+    cout<<endl<<top(stack2);
+    stack2=pop(stack2);
+    cout<<endl<<top(stack2);
+    stack2=pop(stack2);
+    cout<<endl<<top(stack2);
+    stack2=pop(stack2);
+    
     return 0;
 }
