@@ -1,78 +1,60 @@
-//HEAD
+#include<bits/stdc++.h> 
+using namespace std; 
+#define MAX 1000 
+template <class T>
+class Stack 
+{ 
+	int top; 
+    public: 
+	T a[MAX]; //Maximum size of Stack 
 
-#include "stdio.h"
-#include "string.h"
-#include "stdlib.h"
-#include "math.h"
-
-//BODY
-
-int stackArr[100005];
-int top = -1;
-int empty();
-void push(int x)
-{
-    stackArr[++top]=x;
-}
-int peek()
-{
-    return(stackArr[top]);
-}
-void pop()
-{
-    int c;
-    if(!empty()){
-        c=stackArr[top--];
+	Stack() { top = -1; } 
+    
+	bool push(T x){
+      if(top>=(MAX-1)){
+        cout<<"Stack Overflow";
+      }
+      else{
+        a[++top] = x;
+        cout<<x<<" pushed to the stack"<<endl;
+        return true;
+      }
     }
     
-}
-int empty()
-{
-    if(top==-1){
-        return 1;
+	T pop(){
+      if(top<0){
+        cout<<"Stack Underflow";
+      }
+      else{
+        T c = a[top--];
+        return c;
+      }
     }
-    else 
-        return 0;
-}
+    
+	bool isEmpty(){
+      return (top<0);
+    } 
+}; 
+ 
+int main() 
+{ 
+	class Stack<int> s; 
+	s.push(10); 
+	s.push(20); 
+	s.push(30); 
+	cout<<s.pop() << " Popped from stack\n"; 
+    
+    class Stack<double> s1; 
+	s1.push(10.1); 
+	s1.push(20.1); 
+	s1.push(30.1); 
+	cout<<s1.pop() << " Popped from stack\n"; 
+    
+    class Stack<char> s2; 
+	s2.push('a'); 
+	s2.push('b'); 
+	s2.push('c'); 
+	cout<<s2.pop() << " Popped from stack\n"; 
 
-//TAIL
-
-int main()
-{
-    int n;
-    top = -1;
-    scanf("%d", &n);
-    for (int i = 0; i < n; i++) {
-        int t, x;
-        scanf("%d", &t);
-        if (t == 1) {
-            scanf("%d", &x);
-            push(x);
-        }
-        else if (t == 2) {
-            if (empty()) {
-                printf("Invalid\n");
-            }
-            else {
-                pop();
-            }
-        }
-        else if (t == 3){
-            if (empty()) {
-                printf("Invalid\n");
-                continue;
-            }
-            for (int j = top; j >= 0; j--) {
-                printf("%d ", stackArr[j]);
-            }printf("\n");
-        }
-        else {
-            if (empty()) {
-                printf("Invalid\n");
-                continue;
-            }
-            printf("%d\n", peek());
-        }
-    }
-    return 0;
-}
+	return 0; 
+} 
