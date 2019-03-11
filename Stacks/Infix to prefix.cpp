@@ -53,11 +53,11 @@ void converttopre(string s){
 	for(int i=0;i<l;i++){
 		if(s[i]=='('){ 
 		    s[i]=')';
-		    i++;
+		    continue;
 		}
 		else if(s[i]==')'){
 		    s[i]='(';
-		    i++;
+		    continue;
 		}
  	}
 
