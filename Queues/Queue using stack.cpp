@@ -1,4 +1,4 @@
-/* enqueue operation costlt of O(n) */
+/* enqueue operation with cost of O(n) */
 
 #include<iostream>
 #include<stack>
@@ -37,7 +37,7 @@ int main(){
 	cout<<q.dequeue();
 }
 
-/* dequeue operation costlt of O(n) */
+/* dequeue operation with cost of O(n) */
 
 #include<iostream>
 #include<stack>
