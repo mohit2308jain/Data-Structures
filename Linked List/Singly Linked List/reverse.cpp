@@ -42,6 +42,21 @@ LinkedListNode {
     LinkedListNode *next;
 };
 */
+
+/* recursive solution for reverse*/
+LinkedListNode* Reverse(LinkedListNode* node) {
+    if (node == NULL) 
+            return NULL; 
+        if (node->next == NULL) { 
+            head = node; 
+            return node; 
+        } 
+        Node* node1 = reverse(node->next); 
+        node1->next = node; 
+        node->next = NULL; 
+        return node;
+}
+
 LinkedListNode* Reverse(LinkedListNode* head) {
     if(head==NULL)
         return head;
