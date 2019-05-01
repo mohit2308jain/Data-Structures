@@ -34,7 +34,7 @@ c
 using namespace std;
 
 int main() {
-	//code
+	
 	int t;
 	cin>>t;
 	while(t--){
