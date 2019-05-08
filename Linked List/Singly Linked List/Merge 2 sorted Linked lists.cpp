@@ -68,6 +68,29 @@ void free_singly_linked_list(SinglyLinkedListNode* node) {
  * };
  *
  */
+
+
+/*
+
+Node* SortedMerge(Node* head1,   Node* head2)
+{
+    if(head1==NULL) return head2;
+    else if(head2==NULL) return head1;
+    else{
+        Node *res=NULL;
+        if(head1->data <= head2->data){
+            res=head1;
+            res->next=SortedMerge(head1->next,head2);
+        }
+        else{
+            res=head2;
+            res->next=SortedMerge(head1,head2->next);
+        }
+        return res;
+    }
+}
+
+*/
 SinglyLinkedListNode* mergeLists(SinglyLinkedListNode* head1, SinglyLinkedListNode* head2) {
     if(head1==NULL) return head2;
     else if(head2==NULL) return head1;
