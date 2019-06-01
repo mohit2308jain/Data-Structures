@@ -4,45 +4,44 @@ using namespace std;
 
 /* Adjacency Matrix */
 int main(){
-	int nodes,edges,x,y,i,j;
-	cin>>nodes>>edges;
-
-	int amat[10][10];
+	int nodes,x,y,i,j;
+	cin>>nodes;
 	
-	for(i=0;i<10;i++){
-		for(j=0;j<10;j++){
+	int amat[20][20];
+	
+	for(i=1;i<=nodes;i++){
+		for(j=1;j<=nodes;j++){
 			amat[i][j]=0;
 		}
 	}
 
+	int f=1;
 	for(i=1;i<=nodes;i++){
-		for(j=1;j<=edges;j++){
+		for(j=1;j<=nodes;j++){
 			cin>>x>>y;
+			if(x==-1 || y==-1){
+				f=0;
+				break;
+			}
 			amat[x][y]=1;
 		}
+		if(f==0) break;
 	}
 	
 	for(i=1;i<=nodes;i++){
-		for(j=1;j<=edges;j++){
+		for(j=1;j<=nodes;j++){
 			cout<<amat[i][j]<<" ";
 		}
 		cout<<endl;
 	}
 
-	// To check for edge between any 2 nodes 
-
-	
-	if(amat[4][3]==1) cout<<"There's a edge between x and y";
-	else cout<<"No edge between x and y";
-
 	return 0;
 }
-
 /* Adjacency List */
 int  main(){
 	vector<int> adj[10];
 	int i,j,x,y,nodes,edges;
-	cin>>nodes>>edges;
+	cin>>nodes;
 
 	for(i=1;i<=edges;i++){
 		cin>>x>>y;
