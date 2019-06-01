@@ -2,7 +2,7 @@
 #include<vector>
 using namespace std;
 
-void BFS(int amat[20][20], int nodes, int startindex){
+void DFS(int amat[20][20], int nodes, int startindex){
 	int i,j;
 	bool flag = false;
 
@@ -79,7 +79,7 @@ int main(){
 	cout<<endl;
 	int startindex;
 	cin>>startindex;
-	BFS(amat,nodes,startindex);
+	DFS(amat,nodes,startindex);
 
 	return 0;
 }
