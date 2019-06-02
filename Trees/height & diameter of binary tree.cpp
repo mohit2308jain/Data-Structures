@@ -37,6 +37,26 @@ int height(struct node* Root){
     if(l>=r) return (l+1);
     else return (r+1);
 }
+
+int diameter(Node* node)
+{
+    if(node==NULL) return 0;
+    
+    int lh = height(node->left);
+    int rh = height(node->right);
+    
+    int ld = diameter(node->left);
+    int rd = diameter(node->right);
+    
+    int m;
+    if(ld>=rd) m=ld;
+    else m=rd;
+    
+    
+    if((lh+rh)>=m) return (lh+rh+1);
+    else return m;
+}
+
 int main() {
     /* Enter your code here. Read input from STDIN. Print output to STDOUT */  
     struct node* root=NULL;
