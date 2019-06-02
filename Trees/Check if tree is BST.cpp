@@ -57,7 +57,6 @@ struct Node {
 /* Returns true if the given tree is a binary search tree
  (efficient version). */
 bool isBST(struct Node* node);
-int isBSTUtil(struct Node* node, int min, int max);
 /* Driver program to test size function*/
 int main()
 {
