@@ -1,4 +1,4 @@
-/**  Lowest Common Ancestor in a BST  **/
+/**  Lowest Common Ancestor in a BINARY SEARCH TREE  **/
 
 Node* LCA(Node *root, int n1, int n2)
 {
@@ -13,6 +13,23 @@ Node* LCA(Node *root, int n1, int n2)
        else break;
    }
    return root;
+}
+
+/**  Lowest Common Ancestor in a BINARY TREE  **/
+
+Node *LCA(Node* root ,int n1 ,int n2)
+{
+   if(root==NULL) return NULL;
+   
+   if(root->data == n1 || root->data == n2) return root;
+   
+   Node* LLca = LCA(root->left,n1,n2);
+   Node* RLca = LCA(root->right,n1,n2);
+   
+   if(LLca && RLca) return root;
+   
+   if(LLca) return LLca;
+   else return RLca;
 }
 
 /** Determine if Two Trees are Identical  **/
