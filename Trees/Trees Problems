@@ -42,3 +42,22 @@ bool isIdentical(Node *r1, Node *r2)
     }
     return 0;
 }
+
+/** Convert Binary tree to its Mirror tree **/
+
+void mirror(Node* node) 
+{
+    if(!node) return;
+    else{
+        Node *t;
+        
+        mirror(node->left);
+        mirror(node->right);
+        
+        t = node->left;
+        node->left = node->right;
+        node->right = t;
+    }
+    
+    
+}
