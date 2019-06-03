@@ -1,0 +1,39 @@
+/** Right View **/
+
+void rightViewUtil(Node* root,int level,int &maxlevel){
+    if(!root) return;
+    if(maxlevel<level){
+        cout<<root->data<<" ";
+        maxlevel = level;
+    }
+    
+    rightViewUtil(root->right,level+1,maxlevel);
+    rightViewUtil(root->left,level+1,maxlevel);
+}
+
+void rightView(Node *root)
+{
+   int maxlevel = 0;
+   rightViewUtil(root,1,maxlevel);
+}
+
+/*** Left View **/
+
+void leftViewUtil(Node* root, int level, int &maxlevel){
+    if(!root) return;
+    
+    if(maxlevel < level){
+        cout<<root->data<<" ";
+        maxlevel = level;
+    }
+    
+    leftViewUtil(root->left,level+1,maxlevel);
+    leftViewUtil(root->right,level+1,maxlevel);
+    
+}
+void leftView(Node *root)
+{
+    int maxlevel = 0;
+    leftViewUtil(root,1,maxlevel);
+    
+}
