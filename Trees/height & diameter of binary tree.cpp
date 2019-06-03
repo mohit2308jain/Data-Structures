@@ -73,3 +73,35 @@ int main() {
     
     return 0;
 }
+
+
+
+/***  O(n) solution for diameter
+Optimized implementation: 
+The above implementation can be optimized by calculating the height in the same recursion rather than calling a height() separately.  
+This optimization reduces time complexity to O(n).
+***/
+int diameter(struct node* root, int& height){
+	int lh = 0,rh = 0;
+
+	int ld = 0, rd = 0;
+	if(!root){
+		height = 0;
+		return 0;
+	}
+
+	ld = diameter(root->left,lh);
+	rd = diameter(root->right,rh);
+
+	if(lh>=rh) height = lh+1;
+	else height = rh+1;
+
+	int r,l = (lh+rh+1);
+	if(ld>=rd) r = ld;
+	else r = rd;
+
+	if(l>=r) return l;
+	else return r;
+
+} 
+
