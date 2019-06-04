@@ -37,6 +37,9 @@ int main(){
 		cin>>arr[i];
 	}
 	cin>>k;
+	
+	k = k%n;
+	
 	print(arr,n);
 	lrotate(arr,n,k);
 	print(arr,n);
