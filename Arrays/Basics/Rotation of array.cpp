@@ -24,6 +24,9 @@ int main()
     for(i=0;i<n;i++){
         cin>>arr[i];
     }
+    
+    k = k%n;
+    
     l=(n-k);
     if(l>k){
         for(i=0;i<k;i++){
