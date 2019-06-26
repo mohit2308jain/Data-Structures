@@ -1,8 +1,7 @@
-#include <bits/stdc++.h>
-
+#include <iostream>
+#include <stack>
 using namespace std;
 
-// Complete the isBalanced function below.
 string isBalanced(string s) {
     stack<char> s1;
     long l = s.length(),i;
@@ -11,50 +10,41 @@ string isBalanced(string s) {
           s1.push(s[i]);
           continue;
       }
-      if(s1.empty()) {return "NO";}
+      if(s1.empty()) {return "not balanced";}
 
       else if (s[i] == ')'){
           char x = s1.top();
           s1.pop();
-          if(x=='[' || x=='{') {return "NO";}
+          if(x=='[' || x=='{') {return "not balanced";}
       }
       else if (s[i] == '}') {
         char x = s1.top();
         s1.pop();
-        if (x == '[' || x == '(') {return "NO";}
+        if (x == '[' || x == '(') {return "not balanced";}
       } 
       else if (s[i] == ']') {
         char x = s1.top();
         s1.pop();
-        if (x == '{' || x == '(') {return "NO";}
+        if (x == '{' || x == '(') {return "not balanced";}
       }
     }
     string rs;
     if(s1.empty()){
-        rs =  "YES";
+        rs =  "balanced";
     }
-    else rs = "NO";
+    else rs = "not balanced";
     return rs;
 }
 
 int main()
 {
-    ofstream fout(getenv("OUTPUT_PATH"));
-
     int t;
     cin >> t;
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
-    for (int t_itr = 0; t_itr < t; t_itr++) {
+    while(t--){
         string s;
-        getline(cin, s);
-
-        string result = isBalanced(s);
-
-        fout << result << "\n";
+        cin>>s;
+        cout<<isBalanced(s)<<endl;
     }
-
-    fout.close();
 
     return 0;
 }
