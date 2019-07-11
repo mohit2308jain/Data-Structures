@@ -61,3 +61,44 @@ void mirror(Node* node)
     
     
 }
+
+/** Expression tree evaluation **/
+
+/*This is a function problem.You only need to complete the function given below*/
+/*The structure of node is as follows
+struct node{
+	string data;
+	node *left;
+	node *right;
+};
+*/
+/*You are required to complete below method */
+int toInt(string d){
+    int i,n=0;
+    if(d[i]!='-'){
+        for(i=0;i<d.length();i++){
+            n = n*10 +  (int)(d[i]-'0');
+        }
+    }
+    else{
+        for(i=0;i<d.length();i++){
+            n = n*10 +  (int)(d[i]-'0');
+            n *= -1;
+        }
+    }
+    return n;
+}
+int evalTree(node* root)
+{
+    if(!root) return 0;
+    if(!root->left && !root->right) return toInt(root->data);
+    
+    int l=evalTree(root->left);
+    int r=evalTree(root->right);
+    
+    if(root->data=='+') return (l+r);
+    if(root->data=='-') return (l-r);
+    if(root->data=='*') return (l*r);
+    if(root->data=='/') return (l/r);
+    
+}
