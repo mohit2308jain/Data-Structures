@@ -118,3 +118,25 @@ struct Node *constructTree(int n, int pre[], char preLN[])
     int i=0;
     return constructTreeUtil(pre,preLN,&i,n);
 }
+
+/************  For bst  **********/
+
+Node *constructTreeUtil(int pre[],int *i,int k,int min,int max,int n){
+    if(*i>=n) return NULL;
+    
+    Node* root=NULL;
+    if(k>min && k<max){
+        root=newNode(k);
+        *i = *i + 1;
+        if(*i<n){
+            root->left=constructTreeUtil(pre,i,pre[*i],min,k,n);
+            root->right=constructTreeUtil(pre,i,pre[*i],k,max,n);
+        }
+    }
+    return root;
+}
+struct Node *constructTree(int n, int pre[], char preLN[])
+{
+    int i=0;
+    return constructTreeUtil(pre,&i,pre[0],0,101,n);
+}
