@@ -38,3 +38,31 @@ int maxLevelSum(Node * root)
     }
     return m;
 }
+
+/*** maximum node level **/
+
+void ll(Node *root,int count[],int level){
+    if(root){
+        count[level]++;
+        ll(root->left,count,level+1);
+        ll(root->right,count,level+1);
+    }
+}
+int maxNodeLevel(Node *root)
+{
+    int h = height(root);
+    int count[h+1];
+    for(int i=0;i<=h+1;i++){
+        count[i]=0;
+    }
+    
+    int level=0;
+    ll(root,count,level);
+    
+    int m = *max_element(count,count+(h+1));
+    for(int i=0;i<=h+1;i++){
+        if(count[i]==m){
+            return i;
+        }
+    }
+}
