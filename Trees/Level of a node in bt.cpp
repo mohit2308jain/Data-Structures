@@ -25,5 +25,5 @@ int gee(Node* root, int target,int level){
 int getLevel(struct Node *node, int target)
 {
     int level = 0;
-    gee(node,target,level);
+    return gee(node,target,level);
 }
