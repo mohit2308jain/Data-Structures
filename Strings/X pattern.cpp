@@ -2,6 +2,7 @@
 using namespace std;
 int main(){
 	string s;
+	cin>>s;
 	int i,j,n = s.length();
 	if(n%2==0) cout<<"not possible";
 	else{
