@@ -1,3 +1,4 @@
+/**************** UNION ******************/
 {
 #include<bits/stdc++.h>
 using namespace std;
@@ -121,3 +122,89 @@ struct node* makeUnion(struct node* head1, struct node* head2)
     res = dup(res);
     return res;
 }
+	   
+/*******************  Intersection  ************/
+	   
+/*This is a function problem.You only need to complete the function given below*/
+/*
+structure of the node is as
+struct node
+{
+	int data;
+	struct node* next;
+};
+*/
+void split(node* root,node** a,node** b){
+    node* s=root;
+    node* f = root->next;
+    while(f){
+        f=f->next;
+        if(f){
+            s=s->next;
+            f=f->next;
+        }
+    }
+    (*a)=root;
+    (*b)=s->next;
+    s->next=NULL;
+}
+node* merge(node* a,node* b){
+    if(!a) return b;
+    if(!b) return a;
+    
+    node* res=NULL;
+    if(a->data<=b->data){
+        res=a;
+        res->next=merge(a->next,b);
+    }
+    else{
+        res=b;
+        res->next=merge(a,b->next);
+    }
+    return res;
+}
+node* mergesort(node* root){
+    node *a,*b,*h=root;
+    if(!root || !root->next) return root;
+    
+    split(h,&a,&b);
+    
+    a=mergesort(a);
+    b=mergesort(b);
+    
+    return merge(a,b);
+}
+node* rev(node* root){
+    node* curr = root,*n=NULL,*p=NULL;
+    while(curr){
+        n=curr->next;
+        curr->next=p;
+        
+        p=curr;
+        curr=n;
+    }
+    root=p;
+    return root;
+}
+struct node* findIntersection(struct node* head1, struct node* head2)
+{
+    head1 = mergesort(head1);
+    head2 = mergesort(head2);
+    
+    node *a=head1,*b=head2,*res=NULL;
+    while(a && b){
+        if(a->data<b->data){
+            a=a->next;
+        }
+        else if(a->data > b->data){
+            b=b->next;
+        }
+        else{
+            push(&res,a->data);
+            a=a->next;
+            b=b->next;
+        }
+    }
+    res=rev(res);
+    return res;
+}	   
