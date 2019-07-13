@@ -3,14 +3,16 @@ using namespace std;
 int main(){
 	string s;
 	cin>>s;
-	int i,j,n = s.length();
+	int i,j,k,n = s.length();
 	if(n%2==0) cout<<"not possible";
 	else{
 		for(i=0;i<n;i++){
+		    k = n-1-i;
 			for(j=0;j<n;j++){
-				if(i==j || j+i==n-1) cout<<s[i];
+				if(j==i || j==k) cout<<s[j];
 				else cout<<" ";
 			}
+			cout<<endl;
 		}
 	}
 	return 0;
