@@ -217,3 +217,27 @@ int main() {
     
 	return 0;
 }
+
+/*
+Sieve of Eratosthenes in python
+
+
+import math as f
+a,b = [int(i) for i in input().split()]
+l = [];
+for x in range(b+1):
+    l.append(1)
+p=a
+
+for p in range(a,f.ceil((f.sqrt(b)))):
+    if l[p]==1:
+        for i in range(p*p,b+1,p):
+            l[i]=0
+    p=p+1
+c=0
+for i in range(a,b+1):
+    if l[i]==1:
+        print(i)
+        c=c+1;
+print(c)
+*/
